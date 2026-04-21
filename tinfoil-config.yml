@@ -12,12 +12,16 @@
 cvm-version: 0.7.5
 cpus: 2
 memory: 8192
+gpus: 8
 
 # Container configuration
 # Note: image must include SHA256 hash (e.g., image:tag@sha256:abc123...)
 containers:
   - name: "app"
-    image: "your-image:tag@sha256:..."
+    image: "vllm/vllm-openai:v0.19.1-cu130@sha256:2ccff44e7b60ed43093004af99b57ae49855c9d49c411c6707807a49a6eb0e8e"
+    runtime: nvidia
+    gpus: all
+    ipc: host
     env:
       - LOG_LEVEL: "info"
     secrets:
